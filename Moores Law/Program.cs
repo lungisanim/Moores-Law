@@ -1,7 +1,9 @@
 ﻿using Moores_Law.Models;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using static Moores_Law.Utilities.Enums;
 
 namespace Moores_Law
 {
@@ -11,22 +13,18 @@ namespace Moores_Law
         {
             List<TagsModel> tags = TagsModel.ProcessFile("c:\\TestFile.csv");
 
-            /*var tag1 = tags.Select(x => x.Tag1).OrderBy(x => x).ToArray();
-            double sortTag = TagsModel.SortTag();
-            double tag1stddev = TagsModel.GetStandardDeviation(sortTag);
-            double tag1rms = TagsModel.GetRootMeanSquare(sortTag); 
-            double tag1rateofchange = TagsModel.GetRateOfChange(sortTag);*/
-
-            //Console.WriteLine("{0} {1} {2}", tag1stddev, tag1rms, tag1rateofchange);
-
-            //var sortedTags = tags.Select(x => x).OrderBy(x => x);
-            foreach (var tag in tags)
+            var tagEnums = Enum.GetValues(typeof(Tagging)).Cast<Tagging>().Select(x => x.ToString()).ToList();
+            foreach (var item in tagEnums)
             {
-                var sortedTag = TagsModel.SortedTag(tag);
+                var sortedTags = tags.Select(x => x.item).OrderBy(x => x).ToArray();
+                foreach (var tag in sortedTags)
+                {
+                    var sortedTag = TagsModel.SortedTag(tag);
 
-                //double tag1stddev = TagsModel.GetStandardDeviation(tagArray);
-                //double tag1rms = TagsModel.GetRootMeanSquare(tagArray);
-                //double tag1rateofchange = TagsModel.GetRateOfChange(tagArray);
+                    double tag1stddev = TagsModel.GetStandardDeviation(tagArray);
+                    double tag1rms = TagsModel.GetRootMeanSquare(tagArray);
+                    double tag1rateofchange = TagsModel.GetRateOfChange(tagArray);
+                }
             }
 
 
