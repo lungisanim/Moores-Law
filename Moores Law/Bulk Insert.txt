@@ -1,7 +1,7 @@
 ﻿USE [MooresDB]
 GO
 BULK INSERT Tags
-    FROM 'C:\TestFile.csv'
+    FROM 'C:\OutputTestFile.csv'
     WITH
     (
     FIRSTROW = 2,
