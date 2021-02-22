@@ -1,7 +1,10 @@
-﻿USE [MooresDB]
+﻿
+USE [MooresDB]
 GO
+CREATE PROCEDURE InsertCSVData
+AS
 BULK INSERT Tags
-    FROM 'C:\OutputTestFile.csv'
+    FROM 'C:\TestFile.csv'
     WITH
     (
     FIRSTROW = 2,
@@ -9,3 +12,4 @@ BULK INSERT Tags
     ROWTERMINATOR = '\n',  
     TABLOCK
     )
+GO
