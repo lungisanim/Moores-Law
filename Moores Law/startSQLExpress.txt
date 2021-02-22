@@ -1,0 +1,3 @@
+﻿Download MSQL SQL Express and install it: then run the following 
+
+net start MSSQL$SQLEXPRESS
